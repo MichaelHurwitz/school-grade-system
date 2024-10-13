@@ -1,11 +1,12 @@
 import { Request, Response } from 'express';
-import { getStudentServiceById } from '../services/studentService';
+import { getStudentByEmail } from '../services/studentService';
 
-export const getStudentController = async (req: Request, res: Response) => {
+export const getStudentController = async (req: Request, res: Response): Promise<void> => {
   try {
-    const student = await getStudentServiceById(req.params.id);
+    const student = await getStudentByEmail(req.params.id);
     if (!student) {
-      return res.status(404).json({ message: 'Student not found' });
+      res.status(404).json({ message: 'Student not found' });
+      return;
     }
     res.status(200).json(student);
   } catch (error) {

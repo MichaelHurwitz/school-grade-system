@@ -12,3 +12,6 @@ export const updateStudent = async (id: string, updateData: any) => {
 export const deleteStudent = async (id: string) => {
   return await Student.findByIdAndDelete(id);
 };
+
+export const getStudentByEmail = async (email: string) => {
+    return await Student.findOne({ email })};

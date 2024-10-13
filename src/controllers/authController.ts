@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
-import { loginService } from '../services/authService';
+import { login } from '../services/authService';
 
-export const loginController = async (req: Request, res: Response) => {
+export const loginController = async (req: Request, res: Response): Promise<void> => {
   try {
     const { email, password } = req.body;
-    const token = await loginService(email, password);
+    const token = await login(email, password);
     if (token) {
       res.status(200).json({ token });
     } else {
