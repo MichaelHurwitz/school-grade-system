@@ -49,4 +49,4 @@ export interface ISecretary extends Document {
     return bcrypt.compare(password, this.password);
   };
   
-  export const Teacher = mongoose.model<ISecretary>('Secretary', secretarySchema);
+  export const Secretary = mongoose.model<ISecretary>('Secretary', secretarySchema);
