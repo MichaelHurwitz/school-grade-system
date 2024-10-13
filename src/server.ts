@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser'; 
-import userRoutes from './routes/authRoutes';
+import loginRoute from './routes/authRoutes';
 import  swaggerUi  from 'swagger-ui-express';
 import swaggerJsDoc from 'swagger-jsdoc';
 dotenv.config();
@@ -41,7 +41,7 @@ mongoose
   .then(() => console.log('Connected to MongoDB Atlas'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
-app.use('/api/users', userRoutes);
+app.use('/api/users', loginRoute);
 
 
 const PORT = process.env.PORT || 3000;
