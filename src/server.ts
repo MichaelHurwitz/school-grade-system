@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser'; 
-import userRoutes from './routes/userRoutes';
+import userRoutes from './routes/authRoutes';
 import  swaggerUi  from 'swagger-ui-express';
 import swaggerJsDoc from 'swagger-jsdoc';
 dotenv.config();
