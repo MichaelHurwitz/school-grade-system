@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import { createUserController, updateUserController, deleteUserController } from '../controllers/secretaryController';
 import { authenticateToken, authorizeRole } from '../middleware/auth';
-import { Role } from '../models/secretary';
 
 const router = Router();
 
@@ -35,7 +34,7 @@ const router = Router();
  *       403:
  *         description: Forbidden (Secretary only)
  */
-router.post('/users', authenticateToken, authorizeRole(Role.Secretary), createUserController);
+router.post('/users', authenticateToken, authorizeRole('secretary'), createUserController);
 
 /**
  * @swagger
@@ -71,7 +70,7 @@ router.post('/users', authenticateToken, authorizeRole(Role.Secretary), createUs
  *       403:
  *         description: Forbidden (Secretary only)
  */
-router.put('/users/:id', authenticateToken, authorizeRole(Role.Secretary), updateUserController);
+router.put('/users/:id', authenticateToken, authorizeRole('secretary'), updateUserController);
 
 /**
  * @swagger
@@ -94,6 +93,6 @@ router.put('/users/:id', authenticateToken, authorizeRole(Role.Secretary), updat
  *       403:
  *         description: Forbidden (Secretary only)
  */
-router.delete('/users/:id', authenticateToken, authorizeRole(Role.Secretary), deleteUserController);
+router.delete('/users/:id', authenticateToken, authorizeRole('secretary'), deleteUserController);
 
 export default router;
